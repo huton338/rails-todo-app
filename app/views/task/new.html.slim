@@ -3,7 +3,13 @@ h1 タスクの新規作成
 .nav.justufy-content-end
  = link_to '一覧', task_index_path, class: 'nav-link'
 
- = form_with model: @task, url: '/task', local: true do |f|
+
+=if @task.errors.present?
+    ul#error_explanation
+        =@task.errors.full_messages.each do |message|
+            li =message
+
+= form_with model: @task, url: '/task', local: true do |f|
     .form-group
         = f.label :name
         = f.text_field :name, class: 'from-control', id: 'task_name'
