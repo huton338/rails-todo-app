@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
 
     if @user.save
       flash.notice = "ユーザー「#{@user.name}」を登録しました。"
-      redirect_to admin_user_index_path
+      redirect_to admin_users_path
     else
       render :new
     end
