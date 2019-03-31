@@ -8,4 +8,11 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body  
+    ul.navbar-nav.ml-auto
+      - if current_user
+        li.nav-item= link_to 'タスク一覧', task_index_path, class: 'nav-link'
+        li.nav-item= link_to 'ユーザ一覧', admin_users_path, class: 'nav-link'
+        li.nav-item= link_to 'ログアウト', logout_path, class: 'nav-link'
+      - else
+        li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
       =yield
