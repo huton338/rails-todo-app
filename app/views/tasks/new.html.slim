@@ -1,7 +1,7 @@
 h1 タスクの新規作成
 
 .nav.justufy-content-end
- = link_to '一覧', task_index_path, class: 'nav-link'
+ = link_to '一覧', tasks_path, class: 'nav-link'
 
 
 =if @task.errors.present?
@@ -9,7 +9,7 @@ h1 タスクの新規作成
         =@task.errors.full_messages.each do |message|
             li =message
 
-= form_with model: @task, url: '/task', local: true do |f|
+= form_with model: @task, local: true do |f|
     .form-group
         = f.label :name
         = f.text_field :name, class: 'from-control', id: 'task_name'
