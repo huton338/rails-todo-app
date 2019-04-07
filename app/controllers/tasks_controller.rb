@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @task = current_user.tasks.order(created_at: :desc)
+    # 検索機能
+    @q = current_user.tasks.ransack(params[:q])
+    @task = @q.result(distinct: true)
+    # 一覧表示
+    # @task = current_user.tasks.order(created_at: :desc)
   end
 
   def show
